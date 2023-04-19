@@ -1,0 +1,241 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Anuphan:wght@100;300;600&family=Livvic:ital,wght@0,100;1,200;1,600&family=Montserrat:wght@200;400;500;600&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,800;1,900&family=Roboto+Slab:wght@100;200;300;400;500;900&family=Ubuntu:wght@400;500;700&display=swap');
+
+/*
+font-family: 'Anuphan', sans-serif;
+font-family: 'Livvic', sans-serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Poppins', sans-serif;
+font-family: 'Roboto Slab', serif;
+font-family: 'Ubuntu', sans-serif;*/
+
+* {
+  margin: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color:darkseagreen;
+  min-height: 100vh;
+  color:black;
+  font-family: 'Anuphan', sans-serif;
+  font-size: 20px;
+}
+.tittle{
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2%;
+    height: auto;
+    padding: 30px 10px;
+    background-color: rgb(129, 164, 129);
+    display: flex;
+    justify-content: center;
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.5);
+}
+.tittle h1{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.5);
+}
+.container{
+    width: 100%;
+    height: auto;
+    padding: 10px 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .right{
+    width: 50%;
+    background-color: rgb(129, 164, 129);
+    padding: 50px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0,0,0.7);
+}
+.container .right .search{
+    width: 100%;
+    text-align: center;
+}
+.container .right .search input{
+    width: 270px;
+    height: 45px;
+    background-color: rgba(0,0,0,0.7);
+    border: none;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    outline: none;
+    padding: 10px 5px;
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+}
+.container .right .search button{
+    height: 45px;
+    padding: 0 25px;
+    background-color: black;
+    color: #fff;
+    font-size: 1.3rem;
+    margin-left: -2px;
+}
+.container .right .search button:hover{
+    background-color: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    color: wheat;
+}
+.container .right .search input::placeholder{
+    font-size: 1.2rem;
+}
+.container .right .meaning{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.container .right .meaning h2,
+.container .right .meaning h3{
+    padding: 8px 0;
+    font-style: italic;
+    font-weight: 500;
+    margin: 0px 0;
+}
+.loading p span{
+    color: white;
+    font-weight: bold;
+    font-style: oblique;
+    font-size: 1.4rem;
+}
+.container .right .meaning h2 span,
+.container .right .meaning h3 span{
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 10px;
+}
+.meaning .definitions{
+    margin-top: 10px;
+}
+.meaning .definitions h1{
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 10px;
+}
+.defin h3{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+}
+.defin p{
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+.defin p span{
+    font-weight: bold;
+}
+audio{
+    margin-left: 24%;
+}
+@media (max-width:1300px) {
+    .container .right{
+        width: 90%;
+    }
+    
+}
+@media (max-width:1023px) {
+    .container .right{
+        width: 100%;
+    }
+    .tittle h1{
+        font-size: 2rem;
+    }
+
+@media (max-width:800px) {
+    audio{
+        margin-left: 20%;
+    }
+    .container .right .search{
+        width: 120%;
+        margin-left: -10%;
+    }
+    .container .right{
+        padding: 10px 0;
+    }
+    .tittle h1{
+        font-size: 1.6rem;
+    }
+
+    
+} 
+}
+@media (max-width:500px) {
+    
+    .container .right{
+        width: 100%;
+    }
+    .tittle{
+        width: 98%;
+        margin-left: 1%;
+    }
+    .tittle h1{
+        font-size: 0.9rem;
+        
+    }
+    .container{
+        margin: 0;
+        padding: 0;
+    }
+    .container .right{
+        width: 90%;
+        margin: 0;
+        padding: 20px 10px;
+        border-radius: 0;
+        margin-top: 25%;
+    }
+    audio{
+        margin-left: 5%;
+        width: 90%;
+        height: 40px;
+    }
+    .defin p{
+        margin-left: 0;
+    }
+    .container .right .search{
+        width: 120%;
+        margin-left: -10%;
+        margin-top: -25%;
+    }
+    .container .right .search input{
+        width: 200px;
+        height: 40px;
+    }
+    .container .right .search input::placeholder{
+        font-size: 0.9rem;
+    }
+    .container .right .search button{
+        width: fit-content;
+        padding: 5px 15px;
+        height: 40px;
+        font-size: 18px;
+    }
+    .container .right .meaning h2,
+.container .right .meaning h3{
+    font-size: 20px;
+    width: 100%;
+}
+.container .right .meaning #wordTitle,
+.container .right .meaning #phonetic{
+    width: 100%;
+    text-align: left;
+}
+.container .right .meaning h2 span,
+.container .right .meaning h3 span{
+    font-weight: bold;
+    font-style: normal;
+    margin-left: 10px;
+}
+.definitions h1{
+    font-size: 1.7rem;
+}
+}

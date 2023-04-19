@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to let's learn English</title>
+    <link rel="shortcut icon"  type="x-icon"  href="icon.png">
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <marquee behavior="scroll" direction="right"><h2>Jodick Ndayisenga</h2></marquee>
+    <marquee behavior="scroll" direction="left" scrollamount="20"><h3>Welcome to let's</h3></marquee>
+    <marquee behavior="scroll" direction="right" scrollamount="50"><h3>learn English</h3></marquee>
+    <div class="tittle">
+      <h1>Welcome to let's learn English</h1>
+    </div>
+    <div class="container">
+      <div class="right">
+        <div class="search">
+          <form>
+            <input type="text" id="searched_word" placeholder="Type word to search" />
+            <button id="myBtn">Search</button>
+          </form>
+        </div>
+            <div class="loading">
+            </div>
+        <div class="meaning">
+          <h2 id="wordTitle"><span id="ther"></span></h2>
+          <h3 id="phonetic"><span id="phon"></span></h3>
+          <audio controls id="my_audio"></audio>
+          <div class="definitions">
+            <h1>Meanings: </h1>
+           <div>
+            <div class="output">
+
+            </div>
+           </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+
+let myAudion = document.querySelector("#my_audio");
+let myPhonetic = document.querySelector("#my_phonetic");
+let btnElement = document.querySelector("#myBtn");
+
+document.addEventListener("DOMContentLoaded", fetch_TheWord("welcome"));
+
+function fit_inData(arr) {
+    const firstPart = arr[0];
+    document.querySelector("#wordTitle").innerHTML = "";
+    document.querySelector("#phonetic").innerHTML = "";
+    document.querySelector(".output").innerHTML = "";
+
+
+    document.querySelector("#wordTitle").innerHTML =
+    `word: <span id="ther">${firstPart.word}</span>`;
+    document.querySelector("#phonetic").innerHTML =
+    `Phonetic:<span id="phon">${firstPart.phonetic}</span>`;
+
+    for(let j = 0; j < firstPart.phonetics.length; j++) {
+        if(firstPart.phonetics[j].audio != ""){
+            myAudion.src = firstPart.phonetics[j].audio;
+        }
+    };
+
+    for (let i = 0; i < firstPart.meanings[0].definitions.length; i++) {
+        const currentPart = firstPart.meanings[0].definitions[i];
+
+        let myDiv = document.createElement("div");
+        myDiv.classList.add("defin");
+
+        if(currentPart.example){
+            myDiv.innerHTML =
+            `<h3 style="font-weight:bold;font-size:17px">Definition${i+1}:</h3>
+            <p>${currentPart.definition}</p>
+            <p><span>Exemple:</span>${currentPart.example}</p>`;
+            document.querySelector(".output").appendChild(myDiv)
+        }
+        else{
+            myDiv.innerHTML =
+            `<h3 style="font-weight:bold;font-size:17px">Definition${i+1}:</h3>
+            <p>${currentPart.definition}</p>`;
+            document.querySelector(".output").appendChild(myDiv)
+        }
+    }
+}
+
+
+async function fetch_TheWord(wor){
+    const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${wor}`;
+    try {
+        const data = await fetch(url)
+        .then((response) =>response.json());
+        fit_inData(data);
+        
+    } catch (error) {
+        console.log(error); 
+    }
+}
+
+btnElement.addEventListener("click", () => {
+    document.querySelector("#wordTitle").innerHTML = "";
+    document.querySelector("#phonetic").innerHTML = "";
+    document.querySelector(".output").innerHTML = "";
+    let searched_word = document.querySelector("#searched_word");
+    if(searched_word.value.length > 2) {
+        document.querySelector(".meaning").style.display = "none";
+        document.querySelector(".loading").innerHTML = 
+        ` <h1>Loading....</h1>
+        <p style="margin-top: 20px;">Searching for the word <span>${searched_word.value}</span></p>`
+        fetch_TheWord(searched_word.value);
+        searched_word.value = "";
+        document.querySelector(".loading").innerHTML = "";
+        document.querySelector(".meaning").style.display = "block";
+    }else{
+        alert("NO")
+    }
+});
+    </script>
+  </body>
+</html>
